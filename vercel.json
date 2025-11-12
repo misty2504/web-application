@@ -12,7 +12,7 @@
     },
     {
       "src": "laravel-backend/composer.json",
-      "use": "vercel-php@0.6.0"
+      "use": "vercel-php@0.7.0"
     }
   ],
   "routes": [
