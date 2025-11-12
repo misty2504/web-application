@@ -1,0 +1,853 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* Prefer modern bold/clean fonts (Poppins, Orbitron, Montserrat) */
+  font-family: 'Poppins', 'Orbitron', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #000000; /* site-wide black background */
+  color: #ffffff;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(90deg, #000000, #0b0b0b);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.08);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #C0C0C0; /* silver */
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+}
+
+.links a {
+  color: #bfbfbf;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+  position: relative;
+}
+
+.links a:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(192,192,192,0.25);
+}
+
+.links a.active {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(192,192,192,0.3);
+}
+
+@media (max-width: 768px) {
+  .nav-inner {
+    padding: 1rem;
+  }
+
+  .links {
+    gap: 1rem;
+  }
+}
+
+/* Landing Page Styles */
+.landing-page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  /* subtle dark silver metallic diagonal */
+  background: linear-gradient(135deg, rgba(12,12,12,0.9), rgba(20,20,20,0.95));
+}
+
+/* update: ensure hero uses metallic highlights and contrast */
+.hero-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  color: #ffffff;
+}
+
+/* hero images should feel glossy and aggressive */
+.hero-image {
+  transition: transform 0.6s cubic-bezier(.2,.9,.3,1), box-shadow 0.4s;
+  border-radius: 1.5rem;
+  box-shadow: 0 28px 50px -20px rgba(0,0,0,0.9), 0 8px 30px rgba(192,192,192,0.06) inset;
+  border: 1px solid rgba(192,192,192,0.06);
+}
+
+.hero-image:hover {
+  transform: scale(1.03) translateY(-6px);
+  box-shadow: 0 36px 70px -30px rgba(0,0,0,0.95), 0 12px 40px rgba(192,192,192,0.09) inset;
+}
+
+/* Feature Cards */
+.feature-card {
+  background: linear-gradient(180deg, #0f0f0f, #070707);
+  border: 1px solid rgba(192,192,192,0.08);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.35s cubic-bezier(.2,.9,.3,1);
+  color: #e6e6e6;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 50px -25px rgba(0,0,0,0.9), 0 8px 40px rgba(192,192,192,0.06);
+  border-color: rgba(192,192,192,0.14);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #cfcfcf;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.12);
+  color: #ffffff;
+}
+
+/* Gradient Text */
+.text-gradient {
+  /* silver metallic gradient text highlight */
+  background: linear-gradient(90deg, #C0C0C0, #FFFFFF 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Navigation */
+.nav-link {
+  color: #cfcfcf;
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: linear-gradient(90deg, rgba(192,192,192,0.9), rgba(255,255,255,0.9));
+  transition: width 0.28s ease-in-out;
+  box-shadow: 0 0 8px rgba(192,192,192,0.15);
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Button Styles */
+.gradient-button {
+  /* metallic silver button */
+  background: linear-gradient(180deg, #d7d7d7, #bdbdbd);
+  color: #000000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  transition: all 0.28s ease;
+  border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+.gradient-button:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 18px 40px -10px rgba(0,0,0,0.85), 0 0 18px rgba(192,192,192,0.12);
+  text-decoration: none;
+}
+
+/* Responsive Utilities */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 3rem 1rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 2rem 1rem;
+  }
+
+  .hero-heading {
+    font-size: 2.5rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .gradient-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #dcdcdc;
+}
+
+/* Featured Cars Section */
+.featured-cars {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #050505, #0b0b0b);
+}
+
+.featured-cars h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.car-card {
+  background: linear-gradient(180deg, #0f0f0f, #070707);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(192,192,192,0.06);
+  transition: transform 0.35s cubic-bezier(.2,.9,.3,1), box-shadow 0.35s;
+}
+
+.car-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), 0 12px 36px rgba(192,192,192,0.06);
+  border-color: rgba(192,192,192,0.14);
+}
+
+.car-image {
+  height: 220px;
+  overflow: hidden;
+  background: #000;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.car-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: contrast(1.05) saturate(1.05);
+}
+
+.car-card:hover .car-image img {
+  transform: scale(1.06);
+  filter: contrast(1.12) saturate(1.08);
+}
+
+.car-info {
+  padding: 1.5rem;
+  color: #e8e8e8;
+}
+
+.car-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.car-price {
+  color: #C0C0C0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.car-description {
+  color: #bdbdbd;
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #090909, #060606);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.feature {
+  text-align: center;
+  padding: 2rem;
+  color: #d9d9d9;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  color: #cfcfcf;
+}
+
+/* CTA Section */
+/* Replace cta background with aggressive car image + dark overlay */
+.cta-section {
+  background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)), url('https://cdn.motor1.com/images/mgl/WZZwq/s1/bugatti-chiron-super-sport-300.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #e6e6e6;
+}
+
+/* Buttons */
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(180deg, #e0e0e0, #bfbfbf);
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 800;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.cta-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.8), 0 0 18px rgba(192,192,192,0.12);
+}
+
+.view-details-button {
+  display: inline-block;
+  background: linear-gradient(180deg, #cfcfcf, #9f9f9f);
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.view-details-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.8), 0 0 12px rgba(192,192,192,0.08);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .car-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Navbar tweaks */
+.navbar {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.logo {
+  height: 2em;
+  padding: 1.5em;
+  filter: drop-shadow(0 4px 16px rgba(192,192,192,0.06));
+}
+
+.hero-section {
+  /* hero background uses a dramatic rare car (Lamborghini Veneno) */
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://cdn.motor1.com/images/mgl/0xWZq/s1/lamborghini-veneno.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Featured Cars Section (duplicate-safe) */
+.featured-cars {
+  padding: 4rem 2rem;
+}
+
+.featured-cars h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.car-card {
+  background: linear-gradient(180deg, #0f0f0f, #070707);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-6px);
+}
+
+.car-image {
+  height: 200px;
+  overflow: hidden;
+  background: #000;
+}
+
+.car-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.car-details {
+  padding: 1.5rem;
+  color: #e8e8e8;
+}
+
+.car-details h3 {
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.car-details .price {
+  color: #C0C0C0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.why-choose-us {
+  background: linear-gradient(180deg, #070707, #0b0b0b);
+  padding: 4rem 2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.feature {
+  text-align: center;
+  padding: 2rem;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  color: #cfcfcf;
+}
+
+.cta-section {
+  /* alternate CTA background (Pagani Huayra BC) */
+  background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), url('https://cdn.motor1.com/images/mgl/VzzEo/s1/pagani-huayra-bc.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em rgba(192,192,192,0.12));
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em rgba(97,218,251,0.08));
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  background: linear-gradient(180deg, #0b0b0b, #060606);
+  border: 1px solid rgba(192,192,192,0.04);
+  color: #e8e8e8;
+}
+
+.read-the-docs {
+  color: #9a9a9a;
+}
+
+/* --- App specific styles for listing --- */
+.navbar {
+  background: linear-gradient(90deg, #0a0a0a, #0b0b0b);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(192,192,192,0.04);
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  color: #fff;
+}
+
+.nav-inner .links a {
+  margin-left: 1rem;
+  color: #cfcfcf;
+  text-decoration: none;
+}
+
+/* container uses slight silver tint on edges */
+.container {
+  max-width: 1280px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+/* Search bar with dark theme */
+.search-bar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #0b0b0b;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* primary-button becomes metallic accent */
+.primary-button {
+  padding: 0.6rem 0.9rem;
+  background: linear-gradient(180deg, #d0d0ff, #9f9fff); /* subtle silver-blue accent */
+  color: #000;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-3px);
+  opacity: 0.98;
+  box-shadow: 0 18px 36px rgba(0,0,0,0.85), 0 0 10px rgba(159,159,255,0.06);
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card-item {
+  background: linear-gradient(180deg, #0d0d0d, #070707);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.85);
+}
+
+.card-image {
+  height: 140px;
+  background: #020202;
+}
+
+.card-image svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card-body {
+  padding: 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: #ddd;
+}
+
+.card-title {
+  margin: 0 0 0.25rem 0;
+  color: #fff;
+}
+
+.card-info {
+  margin: 0 0 0.5rem 0;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-footer .price {
+  font-weight: 700;
+  color: #C0C0C0;
+}
+
+.card-footer button.small {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #cfcfcf, #9f9f9f);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #000;
+  font-weight: 700;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.card-footer button.small:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.8);
+}
+
+@media (min-width:1000px) {
+  .car-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.25s ease forwards;
+}
