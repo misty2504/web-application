@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "react-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "installCommand": "npm install",
+        "buildCommand": "npm run build",
+        "outputDirectory": "dist"
+      }
+    },
+    {
+      "src": "laravel-backend/public/index.php",
+      "use": "@vercel/php"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/laravel-backend/public/index.php?path=$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/react-frontend/index.html"
+    }
+  ],
+  "env": {
+    "APP_NAME": "Laravel",
+    "APP_ENV": "production",
+    "APP_KEY": "base64:your-app-key-here",
+    "APP_DEBUG": "false",
+    "APP_URL": "https://your-deployment-url.vercel.app",
+    "DB_CONNECTION": "mysql",
+    "DB_HOST": "your_db_host",
+    "DB_PORT": "3306",
+    "DB_DATABASE": "your_db_name",
+    "DB_USERNAME": "your_db_user",
+    "DB_PASSWORD": "your_db_password"
+  }
+}
